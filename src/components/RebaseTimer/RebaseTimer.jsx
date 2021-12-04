@@ -6,12 +6,10 @@ import { Skeleton } from "@material-ui/lab";
 import { useEffect, useMemo, useState } from "react";
 import { loadAppDetails } from "../../slices/AppSlice";
 import { useWeb3Context } from "../../hooks/web3Context";
-import { Trans } from "@lingui/macro";
 
 function RebaseTimer() {
   const dispatch = useDispatch();
-  const { provider } = useWeb3Context();
-  const networkId = useSelector(state => state.network.networkId);
+  const { provider, chainID } = useWeb3Context();
 
   const SECONDS_TO_REFRESH = 60;
   const [secondsToRebase, setSecondsToRebase] = useState(0);
@@ -21,13 +19,14 @@ function RebaseTimer() {
   const currentBlock = useSelector(state => {
     return state.app.currentBlock;
   });
+  const rebaseNextBlock = getRebaseBlock(currentBlock);
 
   function initializeTimer() {
     const rebaseBlock = getRebaseBlock(currentBlock);
     const seconds = secondsUntilBlock(currentBlock, rebaseBlock);
     setSecondsToRebase(seconds);
     const prettified = prettifySeconds(seconds);
-    setRebaseString(prettified !== "" ? prettified : <Trans>Less than a minute</Trans>);
+    setRebaseString(prettified !== "" ? prettified : "Less than a minute");
   }
 
   // This initializes secondsToRebase as soon as currentBlock becomes available
@@ -49,7 +48,7 @@ function RebaseTimer() {
       // When the countdown goes negative, reload the app details and reinitialize the timer
       if (secondsToRebase < 0) {
         async function reload() {
-          await dispatch(loadAppDetails({ networkID: networkId, provider: provider }));
+          await dispatch(loadAppDetails({ networkID: chainID, provider: provider }));
         }
         reload();
         setRebaseString("");
@@ -58,7 +57,7 @@ function RebaseTimer() {
         setSecondsToRebase(secondsToRebase => secondsToRebase - SECONDS_TO_REFRESH);
         setSecondsToRefresh(SECONDS_TO_REFRESH);
         const prettified = prettifySeconds(secondsToRebase);
-        setRebaseString(prettified !== "" ? prettified : <Trans>Less than a minute</Trans>);
+        setRebaseString(prettified !== "" ? prettified : "Less than a minute");
       }
     }
     return () => clearInterval(interval);
@@ -70,8 +69,7 @@ function RebaseTimer() {
         {currentBlock ? (
           secondsToRebase > 0 ? (
             <>
-              <strong>{rebaseString}&nbsp;</strong>
-              <Trans>to next rebase</Trans>
+              <strong>{rebaseString}</strong> to next rebase (on block {currentBlock} of {rebaseNextBlock})
             </>
           ) : (
             <strong>rebasing</strong>

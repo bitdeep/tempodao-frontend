@@ -1,6 +1,8 @@
 import { BigNumber, ethers } from "ethers";
 import { addresses } from "../constants";
-import { trim } from "src/helpers";
+import { abi as PrizePool } from "../abi/33-together/PrizePoolAbi2.json";
+import { abi as AwardPool } from "../abi/33-together/AwardAbi2.json";
+import { abi as SOhmAbi } from "../abi/sOHM.json";
 
 /**
  * Calculates user's odds of winning based on their pool balance
@@ -58,30 +60,21 @@ export const secondsToDaysForInput = (seconds: number) => {
 /**
  * TODO: add the mainnet urls
  * return helper urls for the Pool Together UI.
- * @param networkId
+ * @param chainID
  * @returns [PrizePoolURI, PoolDetailsURI]
  */
-export const poolTogetherUILinks = (networkId: number): Array<string> => {
-  const contractAddress = addresses[networkId].PT_PRIZE_POOL_ADDRESS;
+export const poolTogetherUILinks = (chainID: number): Array<string> => {
+  const contractAddress = addresses[chainID].PT_PRIZE_POOL_ADDRESS;
 
-  if (networkId === 4) {
+  if (chainID === 4) {
     return [
       `https://community.pooltogether.com/pools/rinkeby/${contractAddress}/home`,
       `https://community.pooltogether.com/pools/rinkeby/${contractAddress}/manage#stats`,
     ];
   } else {
     return [
-      `https://app.pooltogether.com/pools/mainnet/sOHM`,
+      `https://community.pooltogether.com/pools/mainnet/${contractAddress}/home`,
       `https://community.pooltogether.com/pools/mainnet/${contractAddress}/manage#stats`,
     ];
   }
 };
-
-/**
- * Utility to simplify trimming odds when there's a chance it'll be a string like ngmi
- *
- * @param odds current odds as number or a string representing 0 odds
- * @param precision the amount of decimal places to display, defaults to 4
- */
-export const trimOdds = (odds: number | string, precision: number = 4) =>
-  typeof odds === "string" ? odds : trim(odds, precision);

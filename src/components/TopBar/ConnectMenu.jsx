@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Box, Button, Divider, Fade, Link, Paper, Popper, Slide, SvgIcon, Typography } from "@material-ui/core";
+import { Box, Button, SvgIcon, Typography, Popper, Paper, Divider, Link, Slide, Fade } from "@material-ui/core";
 import { ReactComponent as ArrowUpIcon } from "../../assets/icons/arrow-up.svg";
 import { ReactComponent as CaretDownIcon } from "../../assets/icons/caret-down.svg";
 import { useWeb3Context } from "src/hooks/web3Context";
-import { Trans } from "@lingui/macro";
 
 function ConnectMenu({ theme }) {
-  const { connect, disconnect, connected, web3 } = useWeb3Context();
-  const networkId = useSelector(state => state.network.networkId);
+  const { connect, disconnect, connected, web3, chainID } = useWeb3Context();
   const [anchorEl, setAnchorEl] = useState(null);
   const [isConnected, setConnected] = useState(connected);
   const [isHovering, setIsHovering] = useState(false);
@@ -17,7 +15,7 @@ function ConnectMenu({ theme }) {
     return state.pendingTransactions;
   });
 
-  let buttonText = <Trans>Connect Wallet</Trans>;
+  let buttonText = "Connect Wallet";
   let clickFunc = connect;
 
   const handleClick = event => {
@@ -25,12 +23,12 @@ function ConnectMenu({ theme }) {
   };
 
   if (isConnected) {
-    buttonText = <Trans>Disconnect</Trans>;
+    buttonText = "Disconnect";
     clickFunc = disconnect;
   }
 
   if (pendingTransactions && pendingTransactions.length > 0) {
-    buttonText = <Trans>In progress</Trans>;
+    buttonText = "In progress";
     clickFunc = handleClick;
   }
 
@@ -42,20 +40,7 @@ function ConnectMenu({ theme }) {
     "pending-txn-container" + (isHovering && pendingTransactions.length > 0 ? " hovered-button" : "");
 
   const getEtherscanUrl = txnHash => {
-    switch (networkId) {
-      case 1:
-        return "https://etherscan.io/tx/" + txnHash;
-      case 4:
-        return "https://rinkeby.etherscan.io/tx/" + txnHash;
-      case 42161:
-        return "https://explorer.arbitrum.io/tx/" + txnHash;
-      case 421611:
-        return "https://rinkeby-explorer.arbitrum.io/tx/" + txnHash;
-      case 43113:
-        return "https://testnet.snowtrace.io/tx/" + txnHash;
-      case 43114:
-        return "https://snowtrace.io/tx/" + txnHash;
-    }
+    return chainID === 4 ? "https://rinkeby.etherscan.io/tx/" + txnHash : "https://etherscan.io/tx/" + txnHash;
   };
 
   useEffect(() => {
@@ -76,7 +61,6 @@ function ConnectMenu({ theme }) {
       id="wallet-menu"
     >
       <Button
-        id="wallet-button"
         className={buttonStyles}
         variant="contained"
         color="secondary"
@@ -121,9 +105,7 @@ function ConnectMenu({ theme }) {
                     style={{ marginBottom: "0px" }}
                     fullWidth
                   >
-                    <Typography>
-                      <Trans>Disconnect</Trans>
-                    </Typography>
+                    <Typography>Disconnect</Typography>
                   </Button>
                 </Box>
               </Paper>

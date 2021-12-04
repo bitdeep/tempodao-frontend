@@ -1,8 +1,8 @@
 import { EPOCH_INTERVAL, BLOCK_RATE_SECONDS, addresses } from "../constants";
-import { BigNumber, ethers } from "ethers";
+import { ethers } from "ethers";
 import axios from "axios";
-import { abi as PairContractABI } from "../abi/PairContract.json";
-import { abi as RedeemHelperABI } from "../abi/RedeemHelper.json";
+import { abi as PairContract } from "../abi/PairContract.json";
+import { abi as RedeemHelperAbi } from "../abi/RedeemHelper.json";
 
 import { SvgIcon } from "@material-ui/core";
 import { ReactComponent as OhmImg } from "../assets/tokens/token_OHM.svg";
@@ -11,30 +11,19 @@ import { ReactComponent as SOhmImg } from "../assets/tokens/token_sOHM.svg";
 import { ohm_dai } from "./AllBonds";
 import { JsonRpcSigner, StaticJsonRpcProvider } from "@ethersproject/providers";
 import { IBaseAsyncThunk } from "src/slices/interfaces";
-import { PairContract, RedeemHelper } from "../typechain";
 
+// NOTE (appleseed): this looks like an outdated method... we now have this data in the graph (used elsewhere in the app)
 export async function getMarketPrice({ networkID, provider }: IBaseAsyncThunk) {
   const ohm_dai_address = ohm_dai.getAddressForReserve(networkID);
-  const pairContract = new ethers.Contract(ohm_dai_address || "", PairContractABI, provider) as PairContract;
+  console.log('//TODO: ohm_dai_address', ohm_dai_address);
+  /*
+  const pairContract = new ethers.Contract(ohm_dai_address, PairContract, provider);
   const reserves = await pairContract.getReserves();
-  const marketPrice = Number(reserves[1].toString()) / Number(reserves[0].toString());
-
-  return marketPrice;
-}
-
-/**
- * gets price of token from coingecko
- * @param tokenId STRING taken from https://www.coingecko.com/api/documentations/v3#/coins/get_coins_list
- * @returns INTEGER usd value
- */
-export async function getTokenPrice(tokenId = "olympus") {
-  let resp;
-  try {
-    resp = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${tokenId}&vs_currencies=usd`);
-    return resp.data[tokenId].usd;
-  } catch (e) {
-    // console.log("coingecko api error: ", e);
-  }
+  const marketPrice = reserves[1] / reserves[0];
+  */
+  // commit('set', { marketPrice: marketPrice / Math.pow(10, 9) });
+  return 1000000000000000000;
+  //return marketPrice;
 }
 
 export function shorten(str: string) {
@@ -129,12 +118,10 @@ export function getTokenImage(name: string) {
 // TS-REFACTOR-NOTE - Used for:
 // AccountSlice.ts, AppSlice.ts, LusdSlice.ts
 export function setAll(state: any, properties: any) {
-  if (properties) {
-    const props = Object.keys(properties);
-    props.forEach(key => {
-      state[key] = properties[key];
-    });
-  }
+  const props = Object.keys(properties);
+  props.forEach(key => {
+    state[key] = properties[key];
+  });
 }
 
 export function contractForRedeemHelper({
@@ -144,11 +131,7 @@ export function contractForRedeemHelper({
   networkID: number;
   provider: StaticJsonRpcProvider | JsonRpcSigner;
 }) {
-  return new ethers.Contract(
-    addresses[networkID].REDEEM_HELPER_ADDRESS as string,
-    RedeemHelperABI,
-    provider,
-  ) as RedeemHelper;
+  return new ethers.Contract(addresses[networkID].REDEEM_HELPER_ADDRESS as string, RedeemHelperAbi, provider);
 }
 
 /**
@@ -218,12 +201,4 @@ export const subtractDates = (dateA: Date, dateB: Date) => {
     minutes,
     seconds,
   };
-};
-
-export const toBN = (num: number) => {
-  return BigNumber.from(num);
-};
-
-export const bnToNum = (bigNum: BigNumber) => {
-  return Number(bigNum.toString());
 };

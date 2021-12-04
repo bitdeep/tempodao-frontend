@@ -1,32 +1,31 @@
 import { useEffect, useState } from "react";
-import { t, Trans } from "@lingui/macro";
 import { ClaimBondTableData, ClaimBondCardData } from "./ClaimRow";
-import { isPendingTxn, txnButtonTextGeneralPending } from "src/slices/PendingTxnsSlice";
-import { redeemAllBonds } from "src/slices/BondSlice";
+import { txnButtonText, isPendingTxn, txnButtonTextGeneralPending } from "src/slices/PendingTxnsSlice";
+import { redeemAllBonds, redeemBond } from "src/slices/BondSlice";
+import { calculateUserBondDetails } from "src/slices/AccountSlice";
 import CardHeader from "../../components/CardHeader/CardHeader";
 import { useWeb3Context } from "src/hooks/web3Context";
 import useBonds from "src/hooks/Bonds";
 import {
-  Box,
   Button,
+  Box,
   Paper,
-  Table,
-  TableBody,
-  TableCell,
   TableContainer,
   TableHead,
+  TableBody,
   TableRow,
+  TableCell,
+  Table,
   Zoom,
 } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import "./choosebond.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function ClaimBonds({ activeBonds }) {
   const dispatch = useDispatch();
-  const { provider, address } = useWeb3Context();
-  const networkId = useSelector(state => state.network.networkId);
-  const { bonds } = useBonds(networkId);
+  const { provider, address, chainID } = useWeb3Context();
+  const { bonds } = useBonds();
 
   const [numberOfBonds, setNumberOfBonds] = useState(0);
   const isSmallScreen = useMediaQuery("(max-width: 733px)"); // change to breakpoint query
@@ -49,7 +48,7 @@ function ClaimBonds({ activeBonds }) {
   const onRedeemAll = async ({ autostake }) => {
     console.log("redeeming all bonds");
 
-    await dispatch(redeemAllBonds({ address, bonds, networkID: networkId, provider, autostake }));
+    await dispatch(redeemAllBonds({ address, bonds, networkID: chainID, provider, autostake }));
 
     console.log("redeem all complete");
   };
@@ -71,18 +70,10 @@ function ClaimBonds({ activeBonds }) {
                   <Table aria-label="Claimable bonds">
                     <TableHead>
                       <TableRow>
-                        <TableCell align="center">
-                          <Trans>Bond</Trans>
-                        </TableCell>
-                        <TableCell align="center">
-                          <Trans>Claimable</Trans>
-                        </TableCell>
-                        <TableCell align="center">
-                          <Trans>Pending</Trans>
-                        </TableCell>
-                        <TableCell align="right">
-                          <Trans>Fully Vested</Trans>
-                        </TableCell>
+                        <TableCell align="center">Bond</TableCell>
+                        <TableCell align="center">Claimable</TableCell>
+                        <TableCell align="center">Pending</TableCell>
+                        <TableCell align="right">Fully Vested</TableCell>
                         <TableCell align="right"></TableCell>
                       </TableRow>
                     </TableHead>
@@ -115,7 +106,7 @@ function ClaimBonds({ activeBonds }) {
                         onRedeemAll({ autostake: false });
                       }}
                     >
-                      {txnButtonTextGeneralPending(pendingTransactions, "redeem_all_bonds", t`Claim all`)}
+                      {txnButtonTextGeneralPending(pendingTransactions, "redeem_all_bonds", "Claim all")}
                     </Button>
 
                     <Button
@@ -132,7 +123,7 @@ function ClaimBonds({ activeBonds }) {
                       {txnButtonTextGeneralPending(
                         pendingTransactions,
                         "redeem_all_bonds_autostake",
-                        t`Claim all and Stake`,
+                        "Claim all and Stake",
                       )}
                     </Button>
                   </>

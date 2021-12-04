@@ -24,7 +24,6 @@ tenderly.yaml
 
 # testing
 coverage
-tests/e2e/videos
 
 # production
 build
@@ -42,5 +41,3 @@ yarn-error.log*
 .idea
 *.sublime-*
 .vscode
-
-src/typechain
