@@ -25,7 +25,7 @@ export const dai = new StableBond({
   bondContractABI: DaiBondContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x732617A7f411a084dE5724A691843Fccd732a407", // OlympusBondDepository
+      bondAddress: "0xB1B75890005224679Bc788C996f086FcbbD68337", // OlympusBondDepository
       reserveAddress: "0x130966628846bfd36ff31a822705796e8cb8c18d", // MIM or DAI
     },
     [NetworkID.Testnet]: {
@@ -36,16 +36,16 @@ export const dai = new StableBond({
 });
 
 export const tst = new StableBond({
-  name: "Tv1",
-  displayName: "Tv1",
-  bondToken: "Tv1",
+  name: "Tv3",
+  displayName: "Tv3",
+  bondToken: "Tv3",
   isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: false },
   bondIconSvg: DaiImg,
   bondContractABI: DaiBondContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x900CAEa2159368237c82c1C684D152A2042dF8d1", // OlympusBondDepository
-      reserveAddress: "0x4145FBe0ED36A9d2D7a055c31C1C897602Bbb568", // OHM
+      bondAddress: "0x3c805B1F0f4b221FED89F624B110258D6179B43C", // OlympusBondDepository
+      reserveAddress: "0x4145FBe0ED36A9d2D7a055c31C1C897602Bbb568", // Tv1
     },
     [NetworkID.Testnet]: {
       bondAddress:    "0x0000000000000000000000000000000000000000",
