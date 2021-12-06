@@ -98,7 +98,7 @@ export const loadAppDetails = createAsyncThunk(
     // Calculating staking
     const epoch = await stakingContract.epoch();
     const stakingReward = epoch.distribute;
-    console.log('stakingReward', stakingReward.toString());
+    console.log('stakingReward',stakingContract.address, stakingReward.toString());
     const circ = await sohmMainContract.circulatingSupply();
       console.log('circ', circ.toString());
     const stakingRebase = stakingReward / circ;

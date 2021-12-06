@@ -90,7 +90,7 @@ export const ohm_dai = new LPBond({
   name: "ohm_dai_lp",
   displayName: "TEMPO-MIM LP",
   bondToken: "DAI",
-  isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: true },
+  isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: false },
   bondIconSvg: OhmDaiImg,
   bondContractABI: BondOhmDaiContract,
   reserveContract: ReserveOhmDaiContract,
