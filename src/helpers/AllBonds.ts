@@ -25,8 +25,8 @@ export const dai = new StableBond({
   bondContractABI: DaiBondContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x9117A9eB5a53018E350a37425C0b749Bc4824851", // OlympusBondDepository
-      reserveAddress: "0x130966628846bfd36ff31a822705796e8cb8c18d", // DAI
+      bondAddress: "0x732617A7f411a084dE5724A691843Fccd732a407", // OlympusBondDepository
+      reserveAddress: "0x130966628846bfd36ff31a822705796e8cb8c18d", // MIM or DAI
     },
     [NetworkID.Testnet]: {
       bondAddress:    "0x0000000000000000000000000000000000000000",
