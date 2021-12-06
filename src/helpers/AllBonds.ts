@@ -35,6 +35,26 @@ export const dai = new StableBond({
   },
 });
 
+export const tst = new StableBond({
+  name: "Tv1",
+  displayName: "Tv1",
+  bondToken: "Tv1",
+  isAvailable: { [NetworkID.Mainnet]: true, [NetworkID.Testnet]: false },
+  bondIconSvg: DaiImg,
+  bondContractABI: DaiBondContract,
+  networkAddrs: {
+    [NetworkID.Mainnet]: {
+      bondAddress: "0x900CAEa2159368237c82c1C684D152A2042dF8d1", // OlympusBondDepository
+      reserveAddress: "0x4145FBe0ED36A9d2D7a055c31C1C897602Bbb568", // OHM
+    },
+    [NetworkID.Testnet]: {
+      bondAddress:    "0x0000000000000000000000000000000000000000",
+      reserveAddress: "0x0000000000000000000000000000000000000000",
+    },
+  },
+
+});
+
 export const eth = new CustomBond({
   name: "eth",
   displayName: "wETH",
@@ -93,7 +113,7 @@ export const ohm_dai = new LPBond({
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
 // export const allBonds = [dai, ohm_dai, ohm_weth];
-export const allBonds = [dai];
+export const allBonds = [dai, tst];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
   return { ...prevVal, [bond.name]: bond };
 }, {});

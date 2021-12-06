@@ -9,7 +9,7 @@ const darkTheme = {
   color: "#FCFCFC",
   gold: "#F8CC82",
   gray: "#A3A3A3",
-  textHighlightColor: "#F4D092",
+  textHighlightColor: "#ffd700",
   backgroundColor: "rgba(8, 15, 53, 1)",
   background: `
     linear-gradient(180deg, rgba(8, 15, 53, 0), rgba(0, 0, 10, 0.9)),
@@ -25,12 +25,12 @@ const darkTheme = {
   popoverBg: "rgba(54, 56, 64, 0.99)",
   menuBg: "#36384080",
   backdropBg: "rgba(54, 56, 64, 0.5)",
-  largeTextColor: "#F4D092",
+  largeTextColor: "#ffd700",
   activeLinkColor: "#F5DDB4",
   activeLinkSvgColor:
     "brightness(0) saturate(100%) invert(84%) sepia(49%) saturate(307%) hue-rotate(326deg) brightness(106%) contrast(92%)",
   primaryButtonColor: "#333333",
-  primaryButtonBG: "#F4D092",
+  primaryButtonBG: "#ffd700",
   primaryButtonHoverBG: "#EDD8B4",
   secondaryButtonHoverBG: "rgba(54, 56, 64, 1)",
   outlinedPrimaryButtonHoverBG: "#F8CC82",

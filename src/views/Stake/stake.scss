@@ -11,7 +11,7 @@
   }
 
   .stake-tab-buttons {
-    margin-bottom: 0.25rem;
+    margin-bottom: 20px;
   }
 
   .stake-table-panel,
@@ -65,8 +65,24 @@
   padding: 0;
   text-align: center;
   margin-top: 10px;
+  
+  .MuiTab-root{
+      font-size: 20px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 5px;
+	transition:0.3s;
+	opacity:0.5;
+  }
+  .MuiTab-root.Mui-selected, .MuiTab-root:hover {
+		opacity: 1;
+	}
   h5 {
     font-weight: 400;
+	    font-size: 20px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 5px;
   }
   h4 {
     font-weight: 500;

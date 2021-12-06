@@ -3,35 +3,40 @@ import fonts from "./fonts";
 import commonSettings from "./global.js";
 
 const lightTheme = {
-  color: "#253449",
+color: "#FCFCFC",
   gold: "#F8CC82",
   gray: "#A3A3A3",
-  blueish_gray: "#768299",
-  textHighlightColor: "#93AEBC", // "#F4D092",
-  backgroundColor: "#AFCDE9",
-  // background:
-  // "radial-gradient(circle at 25% 0%, rgba(227,255,240,.5), rgba(227,255,240,0) 50%), radial-gradient(circle at 80% 80%, rgba(131,165,203,.5), rgba(131,165,203,0) 50%)",
-  background: "linear-gradient(180deg, #AFCDE9 1%, #F7FBE7 100%)",
-  paperBg: "rgba(255, 255, 255, 0.6)",
-  modalBg: "#FAFAFAEF",
-  popoverBg: "rgba(255, 255, 255, 0.95)",
-  menuBg: "rgba(255, 255, 255, 0.5)",
-  backdropBg: "rgba(200, 200, 200, 0.4)",
-  largeTextColor: "#759AAE",
-  activeLinkColor: "#222222",
-  activeLinkSvgColor: "invert(64%) sepia(11%) saturate(934%) hue-rotate(157deg) brightness(90%) contrast(86%)",
-  // primaryButtonBG: "#759AAE",
-  primaryButtonBG: "#93AEBC",
-  primaryButtonHoverBG: "#759AAE",
-  // these need fixing
-  primaryButtonHoverColor: "#333333",
+  black: "#000000",
+  textHighlightColor: "#ffd700",
+  backgroundColor: "rgba(8, 15, 53, 1)",
+  background: `
+    linear-gradient(180deg, rgba(8, 15, 53, 0), rgba(0, 0, 10, 0.9)),
+    linear-gradient(333deg, rgba(153, 207, 255, 0.2), rgba(180, 255, 217, 0.08)),
+    radial-gradient(circle at 77% 89%, rgba(125, 163, 169, 0.8), rgba(125, 163, 169, 0) 50%),
+    radial-gradient(circle at 15% 95%, rgba(125, 163, 169, 0.8), rgba(125, 163, 169, 0) 43%),
+    radial-gradient(circle at 65% 23%, rgba(137, 151, 119, 0.4), rgba(137, 151, 119, 0) 70%),
+    radial-gradient(circle at 10% 0%, rgba(187, 211, 204, 0.33), rgba(187,211,204,0) 35%),
+    radial-gradient(circle at 11% 100%, rgba(131, 165, 203, 0.3), rgba(131, 165, 203, 0) 30%)
+    `,
+  paperBg: "rgba(54, 56, 64, 0.4)",
+  modalBg: "#24242699",
+  popoverBg: "rgba(54, 56, 64, 0.99)",
+  menuBg: "#36384080",
+  backdropBg: "rgba(54, 56, 64, 0.5)",
+  largeTextColor: "#ffd700",
+  activeLinkColor: "#F5DDB4",
+  activeLinkSvgColor:
+    "brightness(0) saturate(100%) invert(84%) sepia(49%) saturate(307%) hue-rotate(326deg) brightness(106%) contrast(92%)",
+  primaryButtonColor: "#333333",
+  primaryButtonBG: "#ffd700",
+  primaryButtonHoverBG: "#fff",
   secondaryButtonHoverBG: "rgba(54, 56, 64, 1)",
   outlinedPrimaryButtonHoverBG: "#F8CC82",
   outlinedPrimaryButtonHoverColor: "#333333",
-  outlinedSecondaryButtonHoverBG: "#FCFCFC",
-  outlinedSecondaryButtonHoverColor: "#333333",
-  containedSecondaryButtonHoverBG: "#33333333",
-  graphStrokeColor: "rgba(37, 52, 73, .2)",
+  outlinedSecondaryButtonHoverBG: "transparent",
+  outlinedSecondaryButtonHoverColor: "#F8CC82", //gold
+  containedSecondaryButtonHoverBG: "rgba(255, 255, 255, 0.15)",
+  graphStrokeColor: "rgba(255, 255, 255, .1)",
 };
 
 export const light = responsiveFontSizes(
@@ -207,14 +212,14 @@ export const light = responsiveFontSizes(
         },
         MuiButton: {
           containedPrimary: {
-            color: "#FCFCFC",
+            color: "#000",
             backgroundColor: lightTheme.primaryButtonBG,
             "&:hover": {
               backgroundColor: lightTheme.primaryButtonHoverBG,
-              color: lightTheme.primaryButtonHoverColor,
+              color: lightTheme.black,
             },
             "@media (hover:none)": {
-              color: lightTheme.color,
+              color: lightTheme.black,
               backgroundColor: lightTheme.primaryButtonBG,
               "&:hover": {
                 backgroundColor: lightTheme.primaryButtonHoverBG,

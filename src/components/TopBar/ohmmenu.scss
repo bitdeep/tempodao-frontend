@@ -8,6 +8,24 @@
 .ohm-menu-button-hover {
   z-index: 9;
 }
+span.MuiButton-label img {
+    height: 40px;
+}
+
+body{
+	#ohm-popper .add-tokens button{
+		min-height:95px !important;
+	}
+	#ohm-popper .add-tokens{
+		margin-bottom:0px;
+	}
+	#ohm-popper .MuiPaper-root.ohm-menu {
+		padding: 10px;
+	}
+	.add-tokens > p {
+		opacity: 0.5;
+	}
+}
 #ohm-popper,
 #ohm-popper-pending {
   z-index: 5;

@@ -5,7 +5,7 @@ import commonSettings from "./global.js";
 export const girthTheme = {
   color: "#EFEFEF",
   gold: "#F8CC82",
-  textHighlightColor: "#F4D092",
+  textHighlightColor: "#ffd700",
   backgroundColor: "#4158D0",
   background: "linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)",
   paperBg: "#4242426A",

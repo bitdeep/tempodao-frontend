@@ -22,7 +22,7 @@ export async function getMarketPrice({ networkID, provider }: IBaseAsyncThunk) {
   const marketPrice = reserves[1] / reserves[0];
   */
   // commit('set', { marketPrice: marketPrice / Math.pow(10, 9) });
-  return 1000000000000000000;
+  return 20000000000;
   //return marketPrice;
 }
 

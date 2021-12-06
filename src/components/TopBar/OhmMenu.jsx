@@ -8,6 +8,8 @@ import {ReactComponent as ArrowUpIcon} from "../../assets/icons/arrow-up.svg";
 import {ReactComponent as sOhmTokenImg} from "../../assets/tokens/token_sOHM.svg";
 import {ReactComponent as ohmTokenImg} from "../../assets/tokens/token_OHM.svg";
 import {ReactComponent as t33TokenImg} from "../../assets/tokens/token_33T.svg";
+import tempoLogo from "../../assets/images/tempos.jpg";
+import stempoLogo from "../../assets/images/stempo.jpg";
 
 import "./ohmmenu.scss";
 import {dai} from "src/helpers/AllBonds";
@@ -77,17 +79,6 @@ function OhmMenu() {
 
     return (
         <>
-            <Link
-                href={`https://app.sushi.com/swap?inputCurrency=${daiAddress}&outputCurrency=${OHM_ADDRESS}`}
-                target="_blank"
-                rel="noreferrer">
-                <Button size="large" variant="contained" color="secondary" fullWidth>
-                    <Typography align="left">
-                        <SvgIcon component={ArrowUpIcon} htmlColor="#A3A3A3"/>
-                        Buy
-                    </Typography>
-                </Button>
-            </Link>
 
             <Box
                 component="div"
@@ -113,30 +104,17 @@ function OhmMenu() {
                                             <Box display="flex" flexDirection="row" justifyContent="space-between">
                                                 <Button variant="contained" color="secondary"
                                                         onClick={addTokenToWallet("TEMPO", OHM_ADDRESS)}>
-                                                    <SvgIcon
-                                                        component={ohmTokenImg}
-                                                        viewBox="0 0 32 32"
-                                                        style={{height: "25px", width: "25px"}}
-                                                    />
+                                                   
+													  <img src={tempoLogo} />
+													
                                                     <Typography variant="body1">TEMPO</Typography>
                                                 </Button>
                                                 <Button variant="contained" color="secondary"
                                                         onClick={addTokenToWallet("sTEMPO", SOHM_ADDRESS)}>
-                                                    <SvgIcon
-                                                        component={sOhmTokenImg}
-                                                        viewBox="0 0 100 100"
-                                                        style={{height: "25px", width: "25px"}}
-                                                    />
+                                                    
+													  <img src={stempoLogo} />
+													
                                                     <Typography variant="body1">sTEMPO</Typography>
-                                                </Button>
-                                                <Button variant="contained" color="secondary"
-                                                        onClick={addTokenToWallet("33T", PT_TOKEN_ADDRESS)}>
-                                                    <SvgIcon
-                                                        component={t33TokenImg}
-                                                        viewBox="0 0 1000 1000"
-                                                        style={{height: "25px", width: "25px"}}
-                                                    />
-                                                    <Typography variant="body1">33T</Typography>
                                                 </Button>
                                             </Box>
                                         </Box>
