@@ -25,7 +25,7 @@ export const dai = new StableBond({
   bondContractABI: DaiBondContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0xB1B75890005224679Bc788C996f086FcbbD68337", // OlympusBondDepository
+      bondAddress: "0x12c9F88fF707778D3e41B23285888934c202e317", // OlympusBondDepository
       reserveAddress: "0x130966628846bfd36ff31a822705796e8cb8c18d", // MIM or DAI
     },
     [NetworkID.Testnet]: {
@@ -113,7 +113,7 @@ export const ohm_dai = new LPBond({
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
 // export const allBonds = [dai, ohm_dai, ohm_weth];
-export const allBonds = [dai, tst];
+export const allBonds = [dai];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
   return { ...prevVal, [bond.name]: bond };
 }, {});
