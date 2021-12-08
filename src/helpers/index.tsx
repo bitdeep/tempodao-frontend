@@ -15,15 +15,14 @@ import { IBaseAsyncThunk } from "src/slices/interfaces";
 // NOTE (appleseed): this looks like an outdated method... we now have this data in the graph (used elsewhere in the app)
 export async function getMarketPrice({ networkID, provider }: IBaseAsyncThunk) {
   const ohm_dai_address = ohm_dai.getAddressForReserve(networkID);
-  console.log('//TODO: ohm_dai_address', ohm_dai_address);
-  /*
   const pairContract = new ethers.Contract(ohm_dai_address, PairContract, provider);
   const reserves = await pairContract.getReserves();
-  const marketPrice = reserves[1] / reserves[0];
-  */
+  const marketPrice = Number(reserves[1].toString()) / Number(reserves[0].toString());
+  const price = marketPrice / Math.pow(10, 9);
+  console.log('marketPrice', marketPrice.toString());
+  console.log('price', price.toString());
   // commit('set', { marketPrice: marketPrice / Math.pow(10, 9) });
-  return 20000000000;
-  //return marketPrice;
+  return marketPrice;
 }
 
 export function shorten(str: string) {

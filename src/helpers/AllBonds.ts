@@ -97,7 +97,7 @@ export const ohm_dai = new LPBond({
   networkAddrs: {
     [NetworkID.Mainnet]: {
       bondAddress: "0x130966628846bfd36ff31a822705796e8cb8c18d",
-      reserveAddress: "0x130966628846bfd36ff31a822705796e8cb8c18d",
+      reserveAddress: "0x720dD9292B3d0DD78c9afa57aFD948c2eA2D50D8",
     },
     [NetworkID.Testnet]: {
       bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
