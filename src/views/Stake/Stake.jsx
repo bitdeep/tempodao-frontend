@@ -236,14 +236,14 @@ function Stake() {
                                                                 <>
                                                                     First time staking <b>TEMPO</b>?
                                                                     <br/>
-                                                                    Please approve Olympus Dao to use
+                                                                    Please approve Tempo DAO to use
                                                                     your <b>TEMPO</b> for staking.
                                                                 </>
                                                             ) : (
                                                                 <>
                                                                     First time unstaking <b>sTEMPO</b>?
                                                                     <br/>
-                                                                    Please approve Olympus Dao to use
+                                                                    Please approve Tempo DAO to use
                                                                     your <b>sTEMPO</b> for unstaking.
                                                                 </>
                                                             )}
