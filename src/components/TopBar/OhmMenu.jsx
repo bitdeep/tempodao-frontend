@@ -104,16 +104,16 @@ function OhmMenu() {
                                             <Box display="flex" flexDirection="row" justifyContent="space-between">
                                                 <Button variant="contained" color="secondary"
                                                         onClick={addTokenToWallet("TEMPO", OHM_ADDRESS)}>
-                                                   
+
 													  <img src={tempoLogo} />
-													
+
                                                     <Typography variant="body1">TEMPO</Typography>
                                                 </Button>
                                                 <Button variant="contained" color="secondary"
                                                         onClick={addTokenToWallet("sTEMPO", SOHM_ADDRESS)}>
-                                                    
+
 													  <img src={stempoLogo} />
-													
+
                                                     <Typography variant="body1">sTEMPO</Typography>
                                                 </Button>
                                             </Box>
