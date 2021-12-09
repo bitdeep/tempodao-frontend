@@ -98,7 +98,8 @@ function TreasuryDashboard() {
                   Market Cap
                 </Typography>
                 <Typography variant="h5">
-                  {marketCap && formatCurrency(marketCap, 0)}
+                  ⌛⌛⌛
+                  {/** marketCap && formatCurrency(marketCap, 0)**/}
                   {!marketCap && <Skeleton type="text" />}
                 </Typography>
               </Box>
@@ -133,11 +134,12 @@ function TreasuryDashboard() {
                   Circulating Supply (total)
                 </Typography>
                 <Typography variant="h5">
-                  {circSupply && totalSupply ? (
+                  ⌛⌛⌛
+                  {/** circSupply && totalSupply ? (
                     parseInt(circSupply) + " / " + parseInt(totalSupply)
                   ) : (
                     <Skeleton type="text" />
-                  )}
+                  )**/}
                 </Typography>
               </Box>
 
@@ -146,7 +148,8 @@ function TreasuryDashboard() {
                   Backing per TEMPO
                 </Typography>
                 <Typography variant="h5">
-                  {backingPerOhm ? formatCurrency(backingPerOhm, 2) : <Skeleton type="text" />}
+                  ⌛⌛⌛
+                  {/** backingPerOhm ? formatCurrency(backingPerOhm, 2) : <Skeleton type="text" />**/}
                 </Typography>
               </Box>
 
