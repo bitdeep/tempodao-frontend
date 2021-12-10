@@ -3,6 +3,8 @@ export const EPOCH_INTERVAL = 28800;
 
 // NOTE could get this from an outside source since it changes slightly over time
 export const BLOCK_RATE_SECONDS = 2;
+export const BLOCK_RATE_SECONDS2 = 0.5;
+export const BLOCK_RATE_SECONDS3 = 40.7;
 
 export const TOKEN_DECIMALS = 9;
 

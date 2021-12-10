@@ -1,4 +1,4 @@
-import { EPOCH_INTERVAL, BLOCK_RATE_SECONDS, addresses } from "../constants";
+import {EPOCH_INTERVAL, BLOCK_RATE_SECONDS, addresses, BLOCK_RATE_SECONDS2, BLOCK_RATE_SECONDS3} from "../constants";
 import { ethers } from "ethers";
 import axios from "axios";
 import { abi as PairContract } from "../abi/PairContract.json";
@@ -56,6 +56,18 @@ export function getRebaseBlock(currentBlock: number) {
 export function secondsUntilBlock(startBlock: number, endBlock: number) {
   const blocksAway = endBlock - startBlock;
   const secondsAway = blocksAway * BLOCK_RATE_SECONDS;
+
+  return secondsAway;
+}
+export function secondsUntilBlock2(startBlock: number, endBlock: number) {
+  const blocksAway = endBlock - startBlock;
+  const secondsAway = blocksAway * BLOCK_RATE_SECONDS2;
+
+  return secondsAway;
+}
+export function secondsUntilBlock3(startBlock: number, endBlock: number) {
+  const blocksAway = endBlock - startBlock;
+  const secondsAway = blocksAway * BLOCK_RATE_SECONDS3;
 
   return secondsAway;
 }

@@ -10,7 +10,7 @@ import {
   Slide,
   Typography,
 } from "@material-ui/core";
-import { prettifySeconds, secondsUntilBlock, shorten, trim } from "../../helpers";
+import { prettifySeconds, secondsUntilBlock2, shorten, trim } from "../../helpers";
 import { bondAsset, calcBondDetails, changeApproval } from "../../slices/BondSlice";
 import { useWeb3Context } from "src/hooks/web3Context";
 import { isPendingTxn, txnButtonText } from "src/slices/PendingTxnsSlice";
@@ -38,8 +38,8 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
 
   const vestingPeriod = () => {
     const vestingBlock = parseInt(currentBlock) + parseInt(bond.vestingTerm);
-    const seconds = secondsUntilBlock(currentBlock, vestingBlock);
-    return prettifySeconds(seconds, "day");
+    const seconds = secondsUntilBlock2(currentBlock, vestingBlock);
+    return prettifySeconds(seconds, );
   };
 
   async function onBond() {
